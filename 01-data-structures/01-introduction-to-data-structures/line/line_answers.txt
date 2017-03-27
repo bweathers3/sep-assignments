@@ -1,1 +1,10 @@
-Starting data structure
+1)
+The problem called for an ordered set of data (a line from which people stay in order).
+The problem also called for people in the line to be able to be added, removed and continue in order.
+For this problem an array, which can be indexed by line position, seemed to be in order.
+2)
+Developers may access records by line position using array position, first, last and middle.
+Developers may also access records through individual names, through search, and remove.
+3)
+Real World data structures might be an inventory list, group member information, etc.
+In real world applications the data is more likely to be an array of arrays
