@@ -1,0 +1,11 @@
+1)
+In this exercise we again used arrays as the data structure.
+Here I used a two dimensional arrays. The arrays were set to the screen size given.
+Developers can access the data using x,y coordinates.
+2)
+Since the color coded data can be repeated for any number of locations data search would focus
+  on locations rather than the values. The primary need is the have quick access to change the color data.
+3)
+Other than screens other uses of this type of grid would include video games, data point location,
+  touch screens, etc.
+  
