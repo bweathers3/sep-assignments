@@ -15,10 +15,12 @@ class MyQueue
 
   def dequeue
     @queue.delete_at(@queue.length - 1)
+    @head = @queue.first
     @tail = @queue.last
   end
 
   def empty?
-    @queue.length == 0
+    #@queue.length == 0
+    @queue.length <= 0
   end
 end
