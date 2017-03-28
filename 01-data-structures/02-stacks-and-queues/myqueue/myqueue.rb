@@ -8,11 +8,17 @@ class MyQueue
   end
 
   def enqueue(element)
+    @queue.insert(0, element)
+    @head = @queue.first
+    @tail = @queue.last
   end
 
   def dequeue
+    @queue.delete_at(@queue.length - 1)
+    @tail = @queue.last
   end
 
   def empty?
+    @queue.length == 0
   end
 end
