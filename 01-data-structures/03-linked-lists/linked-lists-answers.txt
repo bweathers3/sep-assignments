@@ -1,0 +1,45 @@
+I am not sure what the assignment means directing us to put written answers in the text file.
+However I will quickly state the thinking for each method.
+
+
+1) add to tail; checks to see if the head and tail are equal, meaning the llist is empty - reassigns both to nil.
+    then when adding uses a pointer to indicate a full node and moves the tail to the new node which
+    does not indicate the linked node yet. This is the new node.
+
+2)  The remove tail method backs up the pointer one space, then drops the tail by making it
+    equal to the pointer and set the tail.next to nil
+
+3)  The print method loop through the nodes until it reaches a node where node.next is nil.
+    The method prints as it goes
+
+4)  The delete method loops through the node until it finds a node equal to the one to be dropped
+    Once at that point it deletes the node by reseting the node.next of the preceding node to the
+    node which originally followed the deleted node
+
+5)  Both the add to the front and drop the front methods reset the node.next value to achieve
+    both processes
+
+6) Benchmark testing; see result below.
+   Note there are two test for adding the linked_list nodes. The first sets up an array with
+   the nodes before the test loop. While the second test includes the node.new within the loop.
+   The second test, #2, has the new method inside.
+   
+   I also added a find method to the linked_list.rb to run the suggested tests.
+
+
+   Baileys-MBP:03-linked-lists baileyweathers$ ruby benchmark.rb
+                                          user     system      total        real
+test adding to an array               0.000000   0.000000   0.000000 (  0.000859)
+                                          user     system      total        real
+test adding nodes to Linked list      3.530000   0.000000   3.530000 (  3.528686)
+                                          user     system      total        real
+test adding nodes to Linked list #2  10.510000   0.000000  10.510000 ( 10.515821)
+                                          user     system      total        real
+find middle element of array          0.000000   0.000000   0.000000 (  0.000002)
+                                          user     system      total        real
+find middle element of L-list         0.000000   0.000000   0.000000 (  0.000418)
+                                          user     system      total        real
+removes middle element of array       0.000000   0.000000   0.000000 (  0.000011)
+                                          user     system      total        real
+removes middle element of L-list      0.000000   0.000000   0.000000 (  0.000733)
+Baileys-MBP:03-linked-lists baileyweathers$
