@@ -18,10 +18,7 @@ class LinkedList
       @head.next = nil
       @tail = @head
     else
-      loop do
-      break if pointer.next == nil
-        pointer = pointer.next
-      end
+      pointer = @tail
       pointer.next = node
       @tail = node
       @tail.next = nil
@@ -29,21 +26,23 @@ class LinkedList
   end
 
   # This method removes the last node in the lists and must keep the rest of the list intact.
-  def remove_tail
-    pointer = @head
-    if @tail == nil
-      return nil
-    elsif @head == @tail
-      @head = nil
-      @tail = nil
-    else
-      while (pointer.next != nil) && (pointer.next != @tail)
-        pointer = pointer.next
-      end
-      @tail = pointer
-      @tail.next = nil
+
+def remove_tail
+  pointer = @head
+  if @tail == nil
+    return nil
+  elsif @head == @tail
+    @head = nil
+    @tail = nil
+  else
+    while (pointer.next != nil) && (pointer.next != @tail)
+      pointer = pointer.next
     end
+    @tail = pointer
+    @tail.next = nil
   end
+end
+
 
   # This method prints out a representation of the list.
   def print
@@ -98,7 +97,7 @@ class LinkedList
     pointer = @head
     i = 1
     loop do
-      break if i== x
+      break if i == x
       pointer = pointer.next
       i = i + 1
     end
