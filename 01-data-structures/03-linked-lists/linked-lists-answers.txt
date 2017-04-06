@@ -23,7 +23,7 @@ However I will quickly state the thinking for each method.
    Note there are two test for adding the linked_list nodes. The first sets up an array with
    the nodes before the test loop. While the second test includes the node.new within the loop.
    The second test, #2, has the new method inside.
-   
+
    I also added a find method to the linked_list.rb to run the suggested tests.
 
 
@@ -43,3 +43,23 @@ removes middle element of array       0.000000   0.000000   0.000000 (  0.000011
                                           user     system      total        real
 removes middle element of L-list      0.000000   0.000000   0.000000 (  0.000733)
 Baileys-MBP:03-linked-lists baileyweathers$
+
+
+Updated benchmark (4_5_2017):
+
+Baileys-MacBook-Pro:03-linked-lists baileyweathers$ ruby benchmark.rb
+                                          user     system      total        real
+test adding to an array               0.000000   0.000000   0.000000 (  0.000713)
+                                          user     system      total        real
+test adding nodes to Linked list      0.000000   0.000000   0.000000 (  0.001547)
+                                          user     system      total        real
+test adding nodes to Linked list #2   0.010000   0.000000   0.010000 (  0.003176)
+                                          user     system      total        real
+find middle element of array          0.000000   0.000000   0.000000 (  0.000001)
+                                          user     system      total        real
+find middle element of L-list         0.000000   0.000000   0.000000 (  0.000375)
+                                          user     system      total        real
+removes middle element of array       0.000000   0.000000   0.000000 (  0.000006)
+                                          user     system      total        real
+removes middle element of L-list      0.000000   0.000000   0.000000 (  0.000755)
+Baileys-MacBook-Pro:03-linked-lists baileyweathers$ git branch
