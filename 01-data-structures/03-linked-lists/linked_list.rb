@@ -8,6 +8,7 @@ class LinkedList
   def initialize
     @head = nil
     @tail = nil
+    @prev = nil
   end
 
   # This method creates a new `Node` using `data`, and inserts it at the end of the list.
@@ -17,9 +18,11 @@ class LinkedList
       @head = node
       @head.next = nil
       @tail = @head
+      @prev = @tail #
     else
       pointer = @tail
       pointer.next = node
+      @prev = pointer #
       @tail = node
       @tail.next = nil
     end
@@ -34,6 +37,10 @@ def remove_tail
   elsif @head == @tail
     @head = nil
     @tail = nil
+    @prev = nil #
+  elsif @prev != @tail #
+    @tail = @prev #
+    @tail.next = nil #
   else
     while (pointer.next != nil) && (pointer.next != @tail)
       pointer = pointer.next
