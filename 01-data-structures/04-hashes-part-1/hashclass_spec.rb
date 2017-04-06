@@ -26,7 +26,7 @@ RSpec.describe HashClass, type: Class do
       lotr_movies.resize
       expect(lotr_movies.size).to eq 12
     end
-=begin
+
    it "copies existing values properly when the array is resized" do
       movies = HashClass.new(30)
       movies["A New Hope"] = "Average"
@@ -40,8 +40,8 @@ RSpec.describe HashClass, type: Class do
       expect(movies["Return of the Jedi"]).to eq "The Best"
 
     end
-  end
-=begin
+
+
   describe "hash[key] = value" do
     it "does not resize the array when a collision occurs and the values match" do
       hash = HashClass.new(1)
@@ -75,6 +75,5 @@ RSpec.describe HashClass, type: Class do
       expect(lotr_movies["The Hobbit: The Battle of Five Armies"]).to eq "2 hours, 44 minutes"
     end
   end
-=end
 end
 end

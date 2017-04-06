@@ -1,0 +1,10 @@
+
+1) "Double sizing" the array will reduce the cost of running the method
+  as the array worked with increases.
+
+  Increasing the size of the array is effective in avoiding collisions; the
+   goal is then to increase the size in as small increments as possible.
+
+2) The size of the index array can also reduce system performance as the number of index
+  locations in the array without assigned values grows. The goal is to provide a larger pool
+  of index locations to prevent collisions while maintaining an efficient access to the array.
