@@ -106,8 +106,8 @@ class LinkedList
       break if i == x
         pointer = pointer.next
         i = i + 1
-      end
-      return pointer
+    end
+    return pointer
   end
 
 end

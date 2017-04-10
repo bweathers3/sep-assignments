@@ -20,7 +20,7 @@ RSpec.describe SeparateChaining, type: Class do
       expect(i).to eq 4
     end
   end
-=begin
+
   describe "#key" do
     it "returns the sum of the ascii values of the string value" do
       key = "test"
@@ -52,6 +52,7 @@ RSpec.describe SeparateChaining, type: Class do
       expect(star_wars_movies["Star Wars: The Empire Strikes Back"]).to eq "Number Five"
       expect(star_wars_movies["Star Wars: Return of the Jedi"]).to eq "Number Six"
     end
+
   end
 
   describe "#load_factor" do
@@ -94,5 +95,4 @@ RSpec.describe SeparateChaining, type: Class do
     end
   end
 
-=end
 end
