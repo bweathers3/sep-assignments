@@ -12,8 +12,6 @@ class SeparateChaining
 
   def []=(key, value)
     item = index(key, @size)
-        p item
-        p "inside def []="
     if  @items[item] == nil
       new_node = Node.new(key, value)
       bucket = LinkedList.new
@@ -27,15 +25,12 @@ class SeparateChaining
     @load_factor_count = @load_factor_count + 1
 
     if load_factor > @max_load_factor
-          #p load_factor
-          #p "need to resize based on load"
-      resize
+        resize
     end
   end
 
   def [](key)
     bucket = @items[index(key, @size)]
-    p "inside def []    key"
     if bucket != nil
       pointer = bucket.head
       loop do
@@ -68,37 +63,62 @@ class SeparateChaining
   # Resize the hash
   def resize
     @size = @size * 2
-        p @size
     resized_array = Array.new(@size)
-    p "inside def resize"
     @items.each do |item|
-      p "@@@@@@@@@@@@@@@@@@"
-      if item != nil
-        p "@@@@@@@@@@@@@@@@@@"
-        current_list = @items[item]
-        p current_list
-
+    if item != nil
+        current_list = item
         current_node = current_list.head
-        p current_node
+
         loop do
           break if current_node == nil
           updated_index = index(current_node.key, @size)
 
             if  resized_array[updated_index] == nil
+              key = current_node.key
+              value = current_node.value
               new_node = Node.new(key, value)
-                p "inside def resize at linkedlist"
               bucket = LinkedList.new
               bucket.add_to_tail(new_node)
               resized_array[updated_index] = bucket
-            else
+            elsif
+              key = current_node.key
+              value = current_node.value
               new_node = Node.new(key, value)
               resized_array[updated_index].add_to_tail(new_node)
             end
+            current_node = current_node.next
         end
+
       end
       @items = resized_array
+
     end
+
   end
 
 
 end
+
+
+=begin
+test = SeparateChaining.new(6)
+p test.size
+p test.index("The Lord of the Rings: The Fellowship of the Ring", 6)
+
+p test.index("test", 6)
+test.resize
+p "after resize"
+p test.size
+
+#test[](6)
+
+=end
+=begin
+movies = SeparateChaining.new(6)
+p movies["A New Hope"] = "Average"
+p movies["Empire Strikes Back"] = "Excellent"
+p movies["Return of the Jedi"] = "The Best"
+movies.resize
+p move
+
+=end
