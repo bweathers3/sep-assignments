@@ -23,7 +23,6 @@ class SeparateChaining
     end
 
     @load_factor_count = @load_factor_count + 1
-
     if load_factor > @max_load_factor
         resize
     end
@@ -66,37 +65,26 @@ class SeparateChaining
     resized_array = Array.new(@size)
     @items.each do |item|
     if item != nil
-        current_list = item
-        current_node = current_list.head
-
+        current_node = item.head
         loop do
           break if current_node == nil
           updated_index = index(current_node.key, @size)
-
+          key = current_node.key#@@@@@@@@@@@@
+          value = current_node.value #@@@@@@@@@@@@@
+          new_node = Node.new(key, value)
             if  resized_array[updated_index] == nil
-              key = current_node.key
-              value = current_node.value
-              new_node = Node.new(key, value)
               bucket = LinkedList.new
-              bucket.add_to_tail(new_node)
-              resized_array[updated_index] = bucket
+              bucket.add_to_tail(new_node)  ##############################
+              resized_array[updated_index] = bucket #.add_to_tail(new_node)
             elsif
-              key = current_node.key
-              value = current_node.value
-              new_node = Node.new(key, value)
-              resized_array[updated_index].add_to_tail(new_node)
+            resized_array[updated_index].add_to_tail(new_node)
             end
             current_node = current_node.next
         end
-
       end
       @items = resized_array
-
     end
-
   end
-
-
 end
 
 
