@@ -12,13 +12,12 @@ class SeparateChaining
 
   def []=(key, value)
     item = index(key, @size)
+    new_node = Node.new(key, value)
     if  @items[item] == nil
-      new_node = Node.new(key, value)
       bucket = LinkedList.new
       bucket.add_to_tail(new_node)
       @items[item] = bucket
     else
-      new_node = Node.new(key, value)
       @items[item].add_to_tail(new_node)
     end
 
@@ -26,6 +25,7 @@ class SeparateChaining
     if load_factor > @max_load_factor
         resize
     end
+    items_print #***************** REMOVE AFTER TESTING
   end
 
   def [](key)
@@ -69,13 +69,11 @@ class SeparateChaining
         loop do
           break if current_node == nil
           updated_index = index(current_node.key, @size)
-          key = current_node.key#@@@@@@@@@@@@
-          value = current_node.value #@@@@@@@@@@@@@
-          new_node = Node.new(key, value)
+          new_node = Node.new(current_node.key, current_node.value)
             if  resized_array[updated_index] == nil
               bucket = LinkedList.new
-              bucket.add_to_tail(new_node)  ##############################
-              resized_array[updated_index] = bucket #.add_to_tail(new_node)
+              bucket.add_to_tail(new_node)
+              resized_array[updated_index] = bucket
             elsif
             resized_array[updated_index].add_to_tail(new_node)
             end
@@ -85,28 +83,17 @@ class SeparateChaining
       @items = resized_array
     end
   end
+
+  def items_print
+    items_to_print = @items.compact
+    puts
+    puts "This is the separate chaining hashes"
+    puts
+    puts "The Load Factor is:     #{load_factor.round(4)}"
+    puts
+    puts "The Hash:"
+
+    #################   Format print!
+    p items_to_print
+  end
 end
-
-
-=begin
-test = SeparateChaining.new(6)
-p test.size
-p test.index("The Lord of the Rings: The Fellowship of the Ring", 6)
-
-p test.index("test", 6)
-test.resize
-p "after resize"
-p test.size
-
-#test[](6)
-
-=end
-=begin
-movies = SeparateChaining.new(6)
-p movies["A New Hope"] = "Average"
-p movies["Empire Strikes Back"] = "Excellent"
-p movies["Return of the Jedi"] = "The Best"
-movies.resize
-p move
-
-=end
