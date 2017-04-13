@@ -30,6 +30,7 @@ RSpec.describe OpenAddressing, type: Class do
   end
 
   describe "#hash[key] = value" do
+
     it "does not resizes the array when a collision occurs and hash is not full" do
       hash = OpenAddressing.new(4)
       hash["key"] = "value"
@@ -62,7 +63,6 @@ RSpec.describe OpenAddressing, type: Class do
       inception["The Original"] = "The Best Movie Ever"
       expect(inception.next_open_index(0)).to eq -1
     end
-
   end
 
   describe "#resize" do
