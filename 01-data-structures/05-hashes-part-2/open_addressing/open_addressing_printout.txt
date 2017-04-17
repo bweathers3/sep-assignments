@@ -1,0 +1,10 @@
+This is the open_addressing hashes
+The Load Factor is:     0.0313
+The Hash:
+
+"The Key:   Star Wars: Revenge of the Sith, With a value:     Number Three"
+"The Key:   Star Wars: Attack of the Clones, With a value:     Number Two"
+"The Key:   Star Wars: A New Hope, With a value:     Number Four"
+"The Key:   Star Wars: Return of the Jedi, With a value:     Number Six"
+"The Key:   Star Wars: The Phantom Menace, With a value:     Number One"
+"The Key:   Star Wars: The Empire Strikes Back, With a value:     Number Five"

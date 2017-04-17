@@ -85,4 +85,5 @@ RSpec.describe OpenAddressing, type: Class do
       expect(movies["Return of the Jedi"]).to eq "The Best"
     end
   end
+
 end
