@@ -1,0 +1,11 @@
+This is the seperate chaining hashes
+
+The Load Factor is:     0.5
+
+The Hash:
+The Hash Key:   Star Wars: The Empire Strikes Back, with a value of:   Number Five
+The Hash Key:   Star Wars: Attack of the Clones, with a value of:   Number Two
+The Hash Key:   Star Wars: Return of the Jedi, with a value of:   Number Six
+The Hash Key:   Star Wars: A New Hope, with a value of:   Number Four
+The Hash Key:   Star Wars: The Phantom Menace, with a value of:   Number One
+The Hash Key:   Star Wars: Revenge of the Sith, with a value of:   Number Three

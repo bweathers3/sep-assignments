@@ -25,7 +25,6 @@ class SeparateChaining
     if load_factor > @max_load_factor
         resize
     end
-    items_print #***************** REMOVE AFTER TESTING
   end
 
   def [](key)
@@ -85,15 +84,35 @@ class SeparateChaining
   end
 
   def items_print
-    items_to_print = @items.compact
     puts
-    puts "This is the separate chaining hashes"
+    puts "This is the seperate chaining hashes"
     puts
     puts "The Load Factor is:     #{load_factor.round(4)}"
     puts
     puts "The Hash:"
 
-    #################   Format print!
-    p items_to_print
+    @items.each do |print_item|
+      if print_item != nil
+        pointer = print_item.head
+        loop do
+          break if pointer == nil
+          puts "The Hash Key:   #{pointer.key}, with a value of:   #{pointer.value}"
+          pointer = pointer.next
+        end
+      end
+    end
   end
 end
+
+#=begin === test printing
+star_wars_movies = SeparateChaining.new(6)
+
+star_wars_movies["Star Wars: The Phantom Menace"] = "Number One"
+star_wars_movies["Star Wars: Attack of the Clones"] = "Number Two"
+star_wars_movies["Star Wars: Revenge of the Sith"] = "Number Three"
+star_wars_movies["Star Wars: A New Hope"] = "Number Four"
+star_wars_movies["Star Wars: The Empire Strikes Back"] = "Number Five"
+star_wars_movies["Star Wars: Return of the Jedi"] = "Number Six"
+
+star_wars_movies.items_print
+#=end
