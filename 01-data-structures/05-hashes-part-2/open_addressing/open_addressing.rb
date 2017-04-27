@@ -3,20 +3,18 @@ require_relative 'node'
 class OpenAddressing
 
   def initialize(size)
-    @max_load_factor = 1.0
     @items = Array.new(size)
     @size = size
+    @max_load_factor = 1.0
     @load_factor_count = 0
   end
 
   def []=(key, value)
+    #p "Value then key"
+    #p value, key
     new_index = index(key, @size)
     if @items[new_index] == nil
       @items[new_index] = Node.new(key, value)
-    elsif @items[new_index].key != key && @items[new_index].key != nil
-      resize
-      next_new_index = index(key, @size)
-      self[key] = value
     elsif @items[new_index].key == key && @items[new_index].value != value
       next_new_index = next_open_index(new_index)
       if next_new_index == -1
@@ -26,8 +24,13 @@ class OpenAddressing
       else
         @items[next_new_index] = value
       end
+    elsif @items[new_index].key != key && @items[new_index].key != nil
+      resize
+      self[key] = value
     else
       p "We have hit an unplanned situation"
+      p "value  key  new_index"
+      p value, key, new_index
     end
     @load_factor_count = @load_factor_count + 1
   end
