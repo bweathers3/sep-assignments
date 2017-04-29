@@ -10,27 +10,29 @@ class OpenAddressing
   end
 
   def []=(key, value)
-    #p "Value then key"
-    #p value, key
     new_index = index(key, @size)
     if @items[new_index] == nil
       @items[new_index] = Node.new(key, value)
-    elsif @items[new_index].key == key && @items[new_index].value != value
+    elsif @items[new_index].key == key && @items[new_index].value == value
+      return
+    elsif  @items[new_index].key == key && @items[new_index].value != value
       next_new_index = next_open_index(new_index)
       if next_new_index == -1
         resize
-        next_new_index = index(key, @size)
-        @items[next_new_index] = value
+        index_after_resize = index(key, @size)
+        @items[index_after_resize].value = value
       else
-        @items[next_new_index] = value
+        @items[next_new_index] = Node.new(key, value)
       end
-    elsif @items[new_index].key != key && @items[new_index].key != nil
-      resize
+    elsif @items[new_index].key != key
+      while @items[index(key, @size)].key != key && @items[index(key, @size)].key != nil
+        resize
+        index_after_resize = index(key, @size)
+        break if @items[index_after_resize] == nil
+      end
       self[key] = value
     else
       p "We have hit an unplanned situation"
-      p "value  key  new_index"
-      p value, key, new_index
     end
     @load_factor_count = @load_factor_count + 1
   end
@@ -38,7 +40,7 @@ class OpenAddressing
   def [](key)
     new_index = index(key, @size)
     if @items[new_index] != nil && @items[new_index].key == key
-     @items[new_index].value
+      @items[new_index].value
     end
   end
 
@@ -53,11 +55,13 @@ class OpenAddressing
   def next_open_index(index)
     for i in index..@size - 1
       if @items[i] == nil
+        p i
         return i
       end
     end
     for i in 0..index-1
       if @items[i] == nil
+        p 1
         return i
       end
     end
@@ -101,16 +105,3 @@ class OpenAddressing
   end
 
 end
-
-=begin === test printing
-star_wars_movies = OpenAddressing.new(6)
-
-star_wars_movies["Star Wars: The Phantom Menace"] = "Number One"
-star_wars_movies["Star Wars: Attack of the Clones"] = "Number Two"
-star_wars_movies["Star Wars: Revenge of the Sith"] = "Number Three"
-star_wars_movies["Star Wars: A New Hope"] = "Number Four"
-star_wars_movies["Star Wars: The Empire Strikes Back"] = "Number Five"
-star_wars_movies["Star Wars: Return of the Jedi"] = "Number Six"
-
-star_wars_movies.items_print
-=end
