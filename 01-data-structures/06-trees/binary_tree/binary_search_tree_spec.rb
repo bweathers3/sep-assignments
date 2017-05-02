@@ -173,4 +173,5 @@ RSpec.describe BinarySearchTree, type: Class do
        expect { tree.printf }.to output(expected_output).to_stdout
      }
   end
+
 end
