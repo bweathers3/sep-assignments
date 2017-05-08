@@ -96,6 +96,7 @@ RSpec.describe BinarySearchTree, type: Class do
     end
   end
 
+#=begin
   describe "#delete(data)" do
     it "handles nil gracefully" do
       expect(tree.delete(root, nil)).to eq nil
@@ -141,6 +142,7 @@ RSpec.describe BinarySearchTree, type: Class do
       expect(tree.find(root, mad_max_2.title)).to be_nil
     end
   end
+#=end
 
   describe "#printf" do
      specify {

@@ -4,23 +4,19 @@ class BinarySearchTree
 
   def initialize(root)
     @root = root
+    @parent_left = nil
+    @parent_right = nil
   end
 
   def insert(root, node)
-    #p "root then node"
-    #p root , node
     if node.rating < root.rating
       if root.left == nil
-        #p "left"
-        #p node
         root.left = node
       else
         insert(root.left, node)
       end
     else
       if root.right == nil
-      #  p "right"
-      #  p node
         root.right = node
       else
         insert(root.right, node)
@@ -30,30 +26,39 @@ class BinarySearchTree
 
   # Recursive Depth First Search
   def find(root, data)
-    #p root, data
+    @parent_left, @parent_right = nil, nil
     if root == nil || data == nil
       nil
     else
       if root.title == data
         root
       elsif root.left != nil
+        @parent_left = root
         find(root.left, data)
       elsif root.right != nil
+        @parent_right = root
         find(root.right, data)
       end
     end
   end
 
   def delete(root, data)
-    #p root, data
-    if root == nil || data == nil
-      return nil
-    else
-      item_to_delete = find(root, data)
-      item_to_delete.title = nil
-      item_to_delete.rating = nil
+      if root == nil || data == nil
+        return nil
+      else
+        item_to_delete = find(root, data)
+        if @parent_left == item_to_delete
+          @parent_left.left = item_to_delete.left
+          item_to_delete = nil
+          #item_to_delete.title, item_to_delete.rating = nil, nil
+        end
+        if @parent_right == item_to_delete
+          @parent_right.right = item_to_delete.right
+          item_to_delete = nil
+          #item_to_delete.title, item_to_delete.rating = nil, nil
+        end
+      end
     end
-  end
 
   # Recursive Breadth First Search
   def printf(children=nil)
@@ -77,6 +82,7 @@ class BinarySearchTree
     end
     puts print_array
   end
+
 end
 
 
@@ -95,7 +101,9 @@ end
   tomorrow = Node.new("Tomorrow Never Dies", 61)
   goldeneye = Node.new("GoldenEye", 78)
   licence = Node.new("licence To Kill", 77)
+
   binaryTree = BinarySearchTree.new(supremacy)
+
   binaryTree.insert(supremacy, legacy)
   binaryTree.insert(supremacy, identity)
   binaryTree.insert(supremacy, ultimatum)
@@ -109,5 +117,12 @@ end
   binaryTree.insert(supremacy, tomorrow)
   binaryTree.insert(supremacy, goldeneye)
   binaryTree.insert(supremacy, licence)
+
+  binaryTree.printf
+
+  binaryTree.delete(supremacy, "Quantum of Solace")
+
+  binaryTree.delete(supremacy, "GoldenEye")
+
   binaryTree.printf
 =end

@@ -1,60 +1,52 @@
-require_relative 'node'
 
 class MinBinaryHeap
 
-  def initialize(root)
-    @root = root
+  def initialize
+    @heap_array = []
   end
 
+  def insert(title, rating)
+    p title, rating
+    node = [title, rating]
+    @heap_array << node
+    check_heap(@heap_array.length - 1)
+    p @heap_array
+  end
 
-    # Recursive Depth First Search
-  def find(root, data)
-    #p root, data
-    if root == nil || data == nil
-      nil
-    else
-      if root.title == data
-        root
-      elsif root.left != nil
-        find(root.left, data)
-      elsif root.right != nil
-        find(root.right, data)
+  def find(title)
+    @heap_array.each_with_index do |value, index|
+      if value[0] == title
+        return index
       end
     end
   end
 
-  def delete(root, data)
-    #p root, data
-    if root == nil || data == nil
-      return nil
-    else
-      item_to_delete = find(root, data)
-      item_to_delete.title = nil
-      item_to_delete.rating = nil
+  def delete_it(title)
+    to_remove = find(title)
+    @heap_array.slice!(to_remove)
+    for i in to_remove..@heap_array.length - 1
+      check_heap(i)
+    end
+    p "after delete"
+    p @heap_array
+  end
+
+
+  def printf
+    @heap_array.each do |value|
+      puts "The movie #{value[0]} has a rating of: #{value[1]}"
     end
   end
 
-    # Recursive Breadth First Search
-  def printf(children=nil)
-    print_array = []
-    tree_array = []
-    print_array.push("#{@root.title}: #{@root.rating}")
-      if @root.left != nil
-        tree_array.push(@root.left)
-      end
-      if @root.right != nil
-        tree_array.push(@root.right)
-      end
-      tree_array.each do |item|
-        print_array.push("#{item.title}: #{item.rating}")
-          if item.left != nil
-            tree_array.push(item.left)
-          end
-          if item.right != nil
-            tree_array.push(item.right)
-          end
-      end
-      puts print_array
+
+  private
+
+  def check_heap(index)
+    parent_node = (index - 1) / 2
+    if parent_node >= 0 && (@heap_array[parent_node][1] > @heap_array[index][1])
+      @heap_array[parent_node], @heap_array[index] = @heap_array[index], @heap_array[parent_node]
+      check_heap(parent_node)
+    end
   end
 
 end
@@ -62,33 +54,28 @@ end
 
 
 =begin
-  supremacy = Node.new("The Bourne Supremacy", 81)
-  legacy = Node.new("The Bourne Legacy", 56)
-  identity = Node.new("The Bourne Identity", 83)
-  ultimatum = Node.new("The Bourne Ultimatum", 93)
-  jason = Node.new("Jason Bourne", 57)
-  spectre = Node.new("Spectre", 64)
-  skyfall = Node.new("Skyfall", 92)
-  solace = Node.new("Quantum of Solace", 65)
-  royale = Node.new("Casino Royale", 95)
-  day = Node.new("Die Another Day", 58)
-  enough = Node.new("The World is Not Enough", 51)
-  tomorrow = Node.new("Tomorrow Never Dies", 61)
-  goldeneye = Node.new("GoldenEye", 78)
-  licence = Node.new("Licence To Kill", 77)
-  min_heap_tree = BinarySearchTree.new(supremacy)
-  min_heap_tree.insert(supremacy, legacy)
-  min_heap_tree.insert(supremacy, identity)
-  min_heap_tree.insert(supremacy, ultimatum)
-  min_heap_tree.insert(supremacy, jason)
-  min_heap_tree.insert(supremacy, spectre)
-  min_heap_tree.insert(supremacy, skyfall)
-  min_heap_tree.insert(supremacy, solace)
-  min_heap_tree.insert(supremacy, royale)
-  min_heap_tree.insert(supremacy, day)
-  min_heap_tree.insert(supremacy, enough)
-  min_heap_tree.insert(supremacy, tomorrow)
-  min_heap_tree.insert(supremacy, goldeneye)
-  min_heap_tree.insert(supremacy, licence)
+  min_heap_tree = MinBinaryHeap.new()
+
+  min_heap_tree.insert("The Bourne Supremacy", 81)
+  min_heap_tree.insert("The Bourne Legacy", 56)
+  min_heap_tree.insert("The Bourne Identity", 83)
+  min_heap_tree.insert("The Bourne Ultimatum", 93)
+  min_heap_tree.insert("Jason Bourne", 57)
+  min_heap_tree.insert("Spectre", 64)
+  min_heap_tree.insert("Skyfall", 92)
+  min_heap_tree.insert("Quantum of Solace", 65)
+  min_heap_tree.insert("Casino Royale", 95)
+  min_heap_tree.insert("Die Another Day", 58)
+  min_heap_tree.insert("The World is Not Enough", 51)
+  min_heap_tree.insert("Tomorrow Never Dies", 61)
+  min_heap_tree.insert("GoldenEye", 78)
+  min_heap_tree.insert("Licence To Kill", 77)
+
+  min_heap_tree.printf
+
+  min_heap_tree.find("Licence To Kill")
+
+  min_heap_tree.delete_it("Jason Bourne")
+
   min_heap_tree.printf
 =end
