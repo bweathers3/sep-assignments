@@ -1,11 +1,11 @@
 require_relative 'node'
 
+
 class BinarySearchTree
 
   def initialize(root)
     @root = root
-    @parent_left = nil
-    @parent_right = nil
+    @parent = nil
   end
 
   def insert(root, node)
@@ -26,19 +26,16 @@ class BinarySearchTree
 
   # Recursive Depth First Search
   def find(root, data)
-    @parent_left, @parent_right = nil, nil
     if root == nil || data == nil
-      nil
-    else
-      if root.title == data
-        root
-      elsif root.left != nil
-        @parent_left = root
-        find(root.left, data)
-      elsif root.right != nil
-        @parent_right = root
-        find(root.right, data)
-      end
+      return nil
+    elsif root.rating == data
+      return root
+    elsif root.rating > data && root.left != nil
+      @parent = root
+      find(root.left, data)
+    else  root.rating < data && root.right != nil
+      @parent = root
+      find(root.right, data)
     end
   end
 
@@ -47,15 +44,8 @@ class BinarySearchTree
         return nil
       else
         item_to_delete = find(root, data)
-        if @parent_left == item_to_delete
-          @parent_left.left = item_to_delete.left
-          item_to_delete = nil
-          #item_to_delete.title, item_to_delete.rating = nil, nil
-        end
-        if @parent_right == item_to_delete
-          @parent_right.right = item_to_delete.right
-          item_to_delete = nil
-          #item_to_delete.title, item_to_delete.rating = nil, nil
+        if item_to_delete != nil
+          remove(item_to_delete)
         end
       end
     end
@@ -81,6 +71,51 @@ class BinarySearchTree
         end
     end
     puts print_array
+  end
+
+
+  private
+
+  def remove(item_to_delete)
+    if item_to_delete.left == nil && item_to_delete.right == nil
+      parent_drop_node(item_to_delete)
+      item_to_delete = nil
+    elsif item_to_delete.left == nil && item_to_delete.right != nil
+      parent_replace_node(item_to_delete, item_to_delete.right)
+      item_to_delete = nil
+    elsif item_to_delete.left != nil && item_to_delete.right == nil
+      parent_replace_node(item_to_delete, item_to_delete.left)
+      item_to_delete = nil
+    else
+      remove_w_two_children(item_to_delete)
+      item_to_delete = nil
+    end
+    return item_to_delete
+  end
+
+
+  def parent_replace_node(item_to_delete, replacement_node)
+    if @parent.left == item_to_delete
+      @parent.left = replacement_node
+    elsif @parent.right == item_to_delete
+      @parent.right = replacement_node
+    end
+  end
+
+  def parent_drop_node(item_to_delete)
+    if @parent.left == item_to_delete
+      @parent.left = nil
+    elsif @parent.right == item_to_delete
+      @parent.right = nil
+    end
+  end
+
+  def remove_w_two_children(item_to_delete)
+    hold_left_node = item_to_delete.left
+    hold_right_node = item_to_delete.right
+    parent_drop_node(item_to_delete)
+    insert(@parent, hold_left_node)
+    insert(@parent, hold_right_node)
   end
 
 end
@@ -119,10 +154,10 @@ end
   binaryTree.insert(supremacy, licence)
 
   binaryTree.printf
+  #binaryTree.delete(supremacy, 83)
+  #binaryTree.delete(supremacy, 64)
+  #binaryTree.delete(supremacy, 78)
 
-  binaryTree.delete(supremacy, "Quantum of Solace")
+  #binaryTree.printf
 
-  binaryTree.delete(supremacy, "GoldenEye")
-
-  binaryTree.printf
 =end

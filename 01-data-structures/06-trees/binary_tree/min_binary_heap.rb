@@ -6,29 +6,34 @@ class MinBinaryHeap
   end
 
   def insert(title, rating)
-    p title, rating
     node = [title, rating]
     @heap_array << node
     check_heap(@heap_array.length - 1)
-    p @heap_array
   end
 
   def find(title)
-    @heap_array.each_with_index do |value, index|
-      if value[0] == title
-        return index
+    if title == nil
+      return nil
+    else
+      @heap_array.each_with_index do |value, index|
+        if value[0] == title
+          return index
+        end
       end
+      return nil
     end
   end
 
   def delete_it(title)
-    to_remove = find(title)
-    @heap_array.slice!(to_remove)
-    for i in to_remove..@heap_array.length - 1
-      check_heap(i)
+    if title == nil
+      return nil
+    else
+      to_remove = find(title)
+      @heap_array.slice!(to_remove)
+      for i in to_remove..@heap_array.length - 1
+        check_heap(i)
+      end
     end
-    p "after delete"
-    p @heap_array
   end
 
 
@@ -72,10 +77,7 @@ end
   min_heap_tree.insert("Licence To Kill", 77)
 
   min_heap_tree.printf
-
   min_heap_tree.find("Licence To Kill")
-
-  min_heap_tree.delete_it("Jason Bourne")
-
-  min_heap_tree.printf
+  #min_heap_tree.delete_it("Jason Bourne")
+  #min_heap_tree.printf
 =end

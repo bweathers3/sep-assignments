@@ -1,0 +1,59 @@
+
+
+
+
+                                             user     system      total        real
+test adding values to binary search tree  4.140000   0.010000   4.150000 (  4.145325)
+                                             user     system      total        real
+test adding values to min binary heap     0.000000   0.000000   0.000000 (  0.002565)
+                                             user     system      total        real
+find middle element of Bin Search tree    0.000000   0.000000   0.000000 (  0.001008)
+                                             user     system      total        real
+find middle element min binary heap       0.000000   0.000000   0.000000 (  0.000522)
+                                             user     system      total        real
+delete middle element of Bin S. tree      0.000000   0.000000   0.000000 (  0.000989)
+                                             user     system      total        real
+delete middle element min binary heap     0.000000   0.000000   0.000000 (  0.001158)
+
+1) for my Binary search an insertion takes much much longer, than a min binary heap. In this case over 1600 times slower.
+
+2) to find an number the heap was twice as fast
+
+3) The deletion on the other hand was slower for the heap
+
+4) 
+
+ruby binary_search_tree.rb
+
+The Bourne Supremacy: 81
+The Bourne Legacy: 56
+The Bourne Identity: 83
+The World is Not Enough: 51
+Jason Bourne: 57
+The Bourne Ultimatum: 93
+Spectre: 64
+Skyfall: 92
+Casino Royale: 95
+Die Another Day: 58
+Quantum of Solace: 65
+Tomorrow Never Dies: 61
+GoldenEye: 78
+licence To Kill: 77
+
+
+ruby min_binary_heap.rb
+
+The movie The World is Not Enough has a rating of: 51
+The movie The Bourne Legacy has a rating of: 56
+The movie Tomorrow Never Dies has a rating of: 61
+The movie Quantum of Solace has a rating of: 65
+The movie Jason Bourne has a rating of: 57
+The movie Spectre has a rating of: 64
+The movie Licence To Kill has a rating of: 77
+The movie The Bourne Ultimatum has a rating of: 93
+The movie Casino Royale has a rating of: 95
+The movie The Bourne Supremacy has a rating of: 81
+The movie Die Another Day has a rating of: 58
+The movie The Bourne Identity has a rating of: 83
+The movie GoldenEye has a rating of: 78
+The movie Skyfall has a rating of: 92
