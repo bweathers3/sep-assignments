@@ -1,14 +1,11 @@
 class Node
-  attr_accessor :name
-  attr_accessor :film_actor_hash
 
+  attr_accessor :next
+  attr_accessor :title
+  attr_accessor :cast
 
-=begin
-  def initialize(name)
-    @title = name
-    @film_actor_hash = Hash.new
-
-    p name, film_actor_hash
+  def initialize(title, cast)
+    @title = title
+    @cast = cast
   end
-=end
 end
