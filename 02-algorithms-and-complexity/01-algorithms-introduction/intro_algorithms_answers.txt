@@ -1,0 +1,101 @@
+
+###################################################################
+Using the cash machine in the Cayman Islands
+
+def cash_machine
+
+  card  = Insert your debit card
+  set = pin number
+
+  Do set = quick cash option or select other option
+    if other
+      Do selected option = check balance
+        Set Account ("checking" or "savings") option To savings
+        Set Currency ("USD" or "Cayman Dollars" accounts) option To USD
+        USD_savings_balance_return(balance)
+      else if withdrawal
+        Repeat set pin to pin number
+        Set Account ("checking" or "savings") option To savings
+        Set Currency ("USD" or "Cayman Dollars" accounts) option To USD
+        Set amount to USD amount
+      end do
+
+    debit_card_return
+    money_return(amount)
+    USD_savings_balance_return(balance)
+  end
+
+private
+    def debit_card_return
+      return debit card
+    end
+
+    def money_return(amount)
+      return amount money
+    end
+
+    def USD_savings_balance_return(balance)
+      return balance slip
+    end
+
+#######################################################
+
+Calculating a tip
+
+  def tip_plus_bill
+
+    Set bill_amount To bill total
+
+    Set tip_percentage To preferred tip percentage
+
+    Set tip_amount To bill_amount * tip_percentage
+
+    Set total_paid To (bill_amount + tip_amount) Round Up to nearest dollar
+
+    return paid_bill
+
+  end
+
+#######################################################
+
+Check email
+
+def check_email
+
+  Open Chrome
+
+  Click "gmail"
+
+  Set choice to click response of either "Primary" or "Social" or "Promotions"
+
+    while email = unread
+
+      if choice equals read then
+
+        if need to respond
+
+            type message
+
+            press send
+
+        else
+
+            do nothing
+
+        end
+
+      else if leave unread
+
+        do nothing
+
+      else if delete
+
+        delete email with click
+
+      end
+
+    break if all messages read or reviewed
+
+    end
+
+end
