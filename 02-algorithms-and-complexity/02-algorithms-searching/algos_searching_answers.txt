@@ -1,0 +1,22 @@
+
+1) For the alphabetically sorted collection in the checkpoint it would take 7 iterations to find "G" using a linear search.
+
+2) For the alphabetically sorted collection in the checkpoint it would take 3 iterations to find "G" using a binary search.
+
+3) a) fib(10) = 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55
+   b) fib(11) = 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89
+   c) fib(12) = 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144
+
+
+4) a) The Fibonacci Iterative for 20 is:      6765
+      The Fibonacci Iterative count is:   20
+
+   b) The Fibonacci Recursive for 20 is:      6765
+      The Fibonacci Recursive count is:   21891
+
+5) a) I would use an linear search anytime the collection is unsorted. I would also use an iterative solution.
+      Binary search requires a sorted collection and based on the Fibonacci examples the Iterative solution would use quite a bit fewer steps.
+      The question remains if you would save time to sort the collection then use a binary search.
+
+   b) I would use a binary search if the collection is sorted.
+      From what I have read both a recursive and iterative solution should take about the same amount of time or processes for a binary search.
