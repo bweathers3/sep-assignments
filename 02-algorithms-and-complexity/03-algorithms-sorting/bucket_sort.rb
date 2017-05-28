@@ -1,37 +1,20 @@
 
 require_relative 'insertion_sort'
 
-def bucket_sort(collection)
-  return nil if collection == nil
-  return "empty" if collection == []
-  return collection if collection.length <= 1
+def bucket_sort(array)
+  return nil if array == nil
+  return "empty" if array == []
+  return array if array.length <= 1
 
-  collection_A, collection_B, collection_C = [], [], []
-  split = (collection.length / 3).to_i
-  collection_A = collection[(0..split)]
-  collection_B = collection[(split+1..split*2)]
-  collection_C = collection[((split*2)+1..collection.length-1)]
+  array_A, array_B, array_C = [], [], []
+  split = (array.length / 3).to_i
+  array_A = array[(0..split)]
+  array_B = array[(split+1..split*2)]
+  array_C = array[((split*2)+1..array.length-1)]
 
-  collection_A = insertion_sort(collection_A)
-  collection_B = insertion_sort(collection_B)
-  collection_C = insertion_sort(collection_C)
+  array_A = insertion_sort(array_A)
+  array_B = insertion_sort(array_B)
+  array_C = insertion_sort(array_C)
 
-  return collection = insertion_sort(collection_A + collection_B + collection_C)
+  return array = insertion_sort(array_A + array_B + array_C)
 end
-
-=begin
-def print_bucket_sort
-  test_array = ["Mike", "Sally", "Bill", "Chad", "Christina", "Sue", "Elizabeth", "Ann",
-    "Richard", "Andy", "Michael", "Sam", "Tina", "Mallory", "Tim", "David", "Bob", "Kim", "Jim",
-    "Phil", "Casey", "Caleb", "Neal", "Kirk"]
-
-  puts "This is the unsorted array : #{test_array}"
-  puts
-  puts
-  puts "This is the sorted array : #{bucket_sort(test_array)}"
-  puts
-  puts
-end
-
-print_bucket_sort
-=end

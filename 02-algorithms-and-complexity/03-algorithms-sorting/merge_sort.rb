@@ -1,16 +1,15 @@
 
+  def merge_sort(array)
+    return nil if array == nil
+    return "empty" if array == []
+    return array if array.length <= 1
 
-  def merge_sort(collection)
-    return nil if collection == nil
-    return "empty" if collection == []
-    return collection if collection.length <= 1
-
-    if collection.length <= 1
-      return collection
+    if array.length <= 1
+      return array
     else
-      mid = (collection.length / 2).floor
-      left = merge_sort(collection[0..mid - 1])
-      right = merge_sort(collection[mid..collection.length])
+      mid = (array.length / 2).floor
+      left = merge_sort(array[0..mid - 1])
+      right = merge_sort(array[mid..array.length])
       merge(left, right)
     end
   end
@@ -26,20 +25,3 @@
       return [right.first] + merge(left, right[1..right.length])
     end
   end
-
-=begin
-  def print_merge_sort
-    test_array = ["Mike", "Sally", "Bill", "Chad", "Christina", "Sue", "Elizabeth", "Ann",
-      "Richard", "Andy", "Michael", "Sam", "Tina", "Mallory", "Tim", "David", "Bob", "Kim", "Jim",
-      "Phil", "Casey", "Caleb", "Neal", "Kirk"]
-
-    puts "This is the unsorted array : #{test_array}"
-    puts
-    puts
-    puts "This is the sorted array : #{merge_sort(test_array)}"
-    puts
-    puts
-  end
-
-print_merge_sort
-=end
