@@ -1,0 +1,31 @@
+
+
+1) So in swimming an O(1) case might be Michael Phellps and an O(2n) case might be someone who does not know how to swim.
+
+2) A best case scenario for a binary search is equal to the number of 1, you find the element the first time.
+
+3) A worst case scenario for a binary search, where each time you narrow the search by half the
+     remaining elements, so if you had 128 it would be 128 then 64 then 32 then 18 then 9 then
+      5 then 3 then 1. So 8.
+
+4) A bounded case would be the middle between the best and worse case. So for the example of
+      binary search of 128 elements it would be 4.
+
+5) Done will pass google drive link in submission note.
+
+6) Basically at some point it would look like a very straight line going straight up.
+
+7) O(n log n).
+
+8)
+      for n in 1..x do
+        puts n
+      end
+
+9) See addition work with google drive doc above
+
+10) The Big-O of binary search = O(log n).
+
+11) The Big-Omega of a binary search = O(1).
+
+12) The Big-Theta of a binary search = Ө(log(n)).
