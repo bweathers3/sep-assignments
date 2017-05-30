@@ -1,0 +1,29 @@
+
+
+1) The Big-O is O(1). This is a constant time algorithm.
+    It always takes the same amount of time to execute.
+
+2) The Big-O is O(n). This is an example of linear time complexity. As n grows, the size of
+    the collection, the time to execute grows linearly with the increase in n. It always grows at the
+    same rate.
+
+    The complexity is determined by the loop which is used to check if the value is larger than
+     the previous largest value. Since an additional check is need for each item added to the
+     collection the growth is constant. In this case it would be O(collection.length).
+
+3) The Big-O is O(n). This is an example of linear time complexity as well. As n grows, the size of
+    the collection, the time to execute grows linearly with the increase in n. It always grows at the
+    same rate. In this case the data is just stored in sub-arrays within the collection.
+
+    The complexity is determined by the loop and sub-loop which are used to check if the value is larger than
+     the previous largest value. Since an additional check is need for each item added to the
+     collection the growth is constant.
+
+     In this case it would be O((collection.length # 1) + (collection.length # 2) + etc...).
+
+4) The Big-O is O(2^n). This is a recursive algorithm with two recursive components. Thus it would be
+     2 to the power of n. As a result the complexity goes up exponentially as n increases.
+
+5) The Big_O is O(n). As in 2 and 3 the complexity is based on the size of n in a linear manner.
+
+6) The Big-O is O(2^n). As in 4 this is again a two part recursive algorithm. This is a quick sort.
