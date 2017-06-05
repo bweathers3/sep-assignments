@@ -1,0 +1,51 @@
+
+Benchmark Results:
+
+
+
+With single Array input
+
+                                             user     system      total        real
+Testing Original Code                    0.030000   0.000000   0.030000 (  0.026729)
+                                             user     system      total        real
+Testing Code Optimizations               0.000000   0.000000   0.000000 (  0.000421)
+                                             user     system      total        real
+Testing Improved Time Complexity         0.000000   0.000000   0.000000 (  0.000280)
+                                             user     system      total        real
+Testing Improved Space Complexity        0.000000   0.000000   0.000000 (  0.000275)
+
+
+
+With Three Array Input
+
+                                             user     system      total        real
+Testing Original Code                    0.260000   0.000000   0.260000 (  0.262566)
+                                             user     system      total        real
+Testing Code Optimizations               0.000000   0.000000   0.000000 (  0.001523)
+                                             user     system      total        real
+Testing Improved Time Complexity         0.000000   0.000000   0.000000 (  0.000940)
+                                             user     system      total        real
+Testing Improved Space Complexity        0.010000   0.000000   0.010000 (  0.000884)
+
+
+
+With Three Array Input with 10000 in each array
+
+                                             user     system      total        real
+Testing Original Code                   25.720000   0.010000  25.730000 ( 25.728775)
+                                             user     system      total        real
+Testing Code Optimizations               0.130000   0.000000   0.130000 (  0.131321)
+                                             user     system      total        real
+Testing Improved Time Complexity         0.010000   0.000000   0.010000 (  0.011701)
+                                             user     system      total        real
+Testing Improved Space Complexity        0.010000   0.000000   0.010000 (  0.010643)
+
+
+
+Questions:
+
+1) The big O for the code optimizations is O(n).
+
+2) The big O for the Improved Time Complexity is O(log n).
+
+3) The big O for the Improved Space Complexity is O(log n).
