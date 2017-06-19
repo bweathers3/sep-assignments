@@ -1,0 +1,64 @@
+
+
+1)	user_post = post.user.unique
+
+	   SELECT DISTINCT user FROM post;
+
+
+2)	a) user_post = post.where.user.not_equal_to. 1
+
+      SELECT * FROM post
+      WHERE id != 1;
+
+b) user_post = post.where.name.equal_to. “Bill”
+
+      SELECT * FROM post
+      WHERE name = “Bill”;
+
+c) user_post = post.where.id. < 10 or >15
+
+      SELECT * FROM post
+      WHERE id < 10 or > 15;
+
+d) user_post = post.where.new_user.equal_to.true
+
+	     SELECT * FROM post
+	     Where new_user = true;
+
+3)	user_post = post.by.date.descending_order
+
+      SELECT * FROM post
+      ORDER BY date DESC;
+
+4)	user_post = post.limit_records(5)
+
+      SELECT * FROM post
+      ORDER BY id DESC limit 5;
+
+5)	user_post = post.group_by.topic
+
+      SELECT * FROM post
+      GROUP BY topic;
+
+6)	user_post = post.count
+
+      SELECT COUNT(*) FROM post;
+
+7)
+    a.	user_post_and_comments = post.and.comments.join
+
+      SELECT post.id, post.title, post.body, comment.id, comment.body, comment.post_id
+	    FROM post
+	    CROSS JOIN comment;
+
+    b.	user_post_sports = post.and.comments.join.equal_to.name
+
+      SELECT topic
+      FROM post
+      INNER JOIN comment ON post.name = comment.name
+
+    c.	user_post_sports = post.and.comments.join.not_equal_to.name
+
+      SELECT topic
+      FROM post
+      FULL OUTER JOIN comment ON post.name = comment.name
